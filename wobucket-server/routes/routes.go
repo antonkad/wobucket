@@ -7,5 +7,7 @@ import (
 )
 
 func SetupRoutes(e *echo.Echo) {
-	e.GET("/upload", handlers.HandleUploadBlob)
+	e.POST("/upload", handlers.HandleUploadBlob)
+	e.GET("/files", handlers.HandleListFiles)
+	e.DELETE("/files/:name", handlers.HandleDeleteFile)
 }
