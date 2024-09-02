@@ -1,0 +1,28 @@
+#
+# Here we declare variable agnostic to the env
+#
+
+# Pass ENV variables from the vault
+#env:
+#  - name: MYSQL_PASSWORD
+#    value: ""
+
+#volume:
+# If needed, mount the configuration comming from the vault
+#  - name: wobucket-config
+#    configMap:
+#      name: wobucket-config
+#volumeMounts: 
+#  - name: wobucket-config
+#    mountPath: /app/config
+
+
+service:
+  type: ClusterIP
+  port: 80
+  containerPort: 80
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+
