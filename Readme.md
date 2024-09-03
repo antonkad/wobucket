@@ -1,7 +1,7 @@
 
 ## Branching Stategy
 
-![](branches.png)
+![](doc-assets/branches.png)
 
 Due to the simplicity of the project, Trunk-Based Development has been selected as the development strategy: [Trunk-Based Development](https://trunkbaseddevelopment.com/).
 
@@ -9,18 +9,38 @@ This approach also offers flexibility for future adjustments. If the project bec
 
 Each time a new tag is created, a build workflow is triggered. We can imagine a gitops approach following this automation to deploy automaticaly the new image, using Argocd.
 
-## Local Test
 
-### Server
+## Server
+
+### *docker*
 
 ```bash
-docker run -p 8080:8080 --platform linux/amd64  antonkad/wobucket:0.0.1
+docker build -t wobucket:latest . && docker run -p 8080:8080  wobucket:latest
 ```
 
-### Client
+or
 
 ```bash
+docker run -p 8080:8080 --platform linux/amd64  antonkad/wobucket:1.0.0
+```
 
+### *golang cli*
+
+make sur to have go installed
+
+```bash
+go mod tidy
+go run .
+```
+
+## Client
+
+```bash
+python3 wb.py list
+python3 wb.py up -f ../Readme.md
+python3 wb.py remove Readme.md
+
+python3 wb.py -url "<URL>" list
 ```
 
 ## Deployment
